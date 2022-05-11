@@ -1,0 +1,102 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <TabControl Margin="5">
+        <TabItem Header="Автомобили">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btLoad" Content="Загрузить" Click="btLoad_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btAdd" Content="Добавить" Click="btAdd_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btEdit" Content="Редактировать" Click="btEdit_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btDelete" Content="Удалить" Click="btDelete_Click" Margin="5,5,10,5" />
+                </StackPanel>
+                <StackPanel Height="15" Grid.Row="1">
+                    <ProgressBar  x:Name="ProgressBarCar" IsIndeterminate="True" Height="10" Width="200"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                </StackPanel>
+
+                <ListView x:Name="lvCar" Margin="5" Grid.Row="2">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Марка"  Width="100" DisplayMemberBinding="{Binding Path=Make, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Цвет" Width="100" DisplayMemberBinding="{Binding Path=Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Клиенты">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btLoadCust" Content="Загрузить" Click="btLoadCust_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btAddCust" Content="Добавить" Click="btAddCust_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btEditCust" Content="Редактировать" Click="btEditCust_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btDeleteCust" Content="Удалить" Click="btDeleteCust_Click" Margin="5,5,10,5" />
+                </StackPanel>
+                <StackPanel Height="15" Grid.Row="1">
+                    <ProgressBar  x:Name="ProgressBarCustomer" IsIndeterminate="True" Height="10" Width="200"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                </StackPanel>
+                <ListView x:Name="lvCustomer" Margin="5" Grid.Row="2" >
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Фамилия"  Width="100" DisplayMemberBinding="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Имя" Width="100" DisplayMemberBinding="{Binding Path=FirstName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+        </TabItem>
+        <TabItem Header="Заказы">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btLoadOrd" Content="Загрузить" Click="btLoadOrd_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btAddOrd" Content="Добавить" Click="btAddOrd_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btEditOrd" Content="Редактировать" Click="btEditOrd_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btDeleteOrd" Content="Удалить" Click="btDeleteOrd_Click" Margin="5,5,10,5" />
+                </StackPanel>
+                <StackPanel Height="15" Grid.Row="1">
+                    <ProgressBar  x:Name="ProgressBarOrder" IsIndeterminate="True" Height="10" Width="200"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                </StackPanel>
+                <ListView x:Name="lvOrder" Margin="5" Grid.Row="2" >
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Фамилия"  Width="100" DisplayMemberBinding="{Binding Path=Cust.LastName}"/>
+                                <GridViewColumn Header="Имя" Width="100" DisplayMemberBinding="{Binding Path=Cust.FirstName}"/>
+                                <GridViewColumn Header="Марка"  Width="100" DisplayMemberBinding="{Binding Path=Car.Make}"/>
+                                <GridViewColumn Header="Цвет" Width="100" DisplayMemberBinding="{Binding Path=Car.Color}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
